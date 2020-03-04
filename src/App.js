@@ -1,26 +1,36 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  render() {
+    const title = "React CRUD app - Keonda draft yay!";
+
+    const anotherTitle = "Keonda - the new wave of connection"
+
+    const list = [
+      "item 1, ",
+      "item 2, ",
+      "Another item, "
+    ]
+
+    return (
+      <div className="App">
+        <h1>
+          {
+            true ? anotherTitle : title
+          }
+        </h1>
+        <h2>
+          {
+            list.map(item => {
+              return item;
+            })
+          }
+        </h2>
+      </div>
+    );
+  }
 }
 
 export default App;
