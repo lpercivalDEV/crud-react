@@ -4,7 +4,15 @@ import './App.css';
 
 class App extends Component {
   onClick() {
-    alert("dog");
+    alert("dog!");
+  }
+
+  onMouseEnter() {
+    alert("cat")
+  }
+
+  onChange(event) {
+    alert(event.target.value)
   }
 
   render() {
@@ -34,6 +42,16 @@ class App extends Component {
             })
           }
         </h2>
+        <h2>
+          {
+            list.map(item => {
+              return (
+                <div onMouseEnter={this.onMouseEnter}>{item}</div>
+              );
+            })
+          }
+        </h2>
+        <input onChange={this.onChange} />
       </div>
     );
   }
