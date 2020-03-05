@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
   onClick() {
     alert("dog!");
   }
@@ -12,7 +18,12 @@ class App extends Component {
   }
 
   onChange(event) {
-    alert(event.target.value)
+    console.log(event.target.value)
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    console.log(this.input.value);
   }
 
   render() {
@@ -46,12 +57,14 @@ class App extends Component {
           {
             list.map(item => {
               return (
-                <div onMouseEnter={this.onMouseEnter}>{item}</div>
+                <div key={item}  onMouseEnter={this.onMouseEnter}>{item}</div>
               );
             })
           }
         </h2>
-        <input onChange={this.onChange} />
+        <form onSubmit={this.onSubmit}>
+          <input onChange={this.onChange} ref={input => this.input = input} />
+        </form>
       </div>
     );
   }
