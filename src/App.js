@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
+import logo from './babyYoda.jpeg';
 import './App.css';
 
 class App extends Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      title: "App title"
+    };
 
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -62,9 +66,11 @@ class App extends Component {
             })
           }
         </h2>
+        <h1>{this.state.title}</h1>
         <form onSubmit={this.onSubmit}>
           <input onChange={this.onChange} ref={input => this.input = input} />
         </form>
+        <img src = {logo} alt= "baby yoda logo" />
       </div>
     );
   }
