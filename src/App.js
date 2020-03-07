@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import MyComponent from './MyComponent';
 import logo from './babyYoda.jpeg';
 import './App.css';
 
@@ -10,31 +11,16 @@ class App extends Component {
       title: "App title"
     };
 
-    this.onSubmit = this.onSubmit.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onClick() {
-    alert("dog!");
-  }
-
-  onMouseEnter() {
-    alert("cat")
-  }
-
-  onChange(event) {
-    console.log(event.target.value)
-  }
-
-  onSubmit(event) {
-    event.preventDefault();
-    console.log(this.input.value);
+    this.setState({
+      title: "Keonda - the new wave for connection"
+    });
   }
 
   render() {
-    const title = "React CRUD app - Keonda draft yay!";
-
-    const anotherTitle = "Keonda - the new wave of connection"
-
     const list = [
       "item 1",
       "item 2",
@@ -43,11 +29,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>
-          {
-            true ? anotherTitle : title
-          }
-        </h1>
+        <h1>{this.state.title}</h1>
         <h2>
           {
             list.map(item => {
@@ -57,20 +39,9 @@ class App extends Component {
             })
           }
         </h2>
-        <h2>
-          {
-            list.map(item => {
-              return (
-                <div key={item}  onMouseEnter={this.onMouseEnter}>{item}</div>
-              );
-            })
-          }
-        </h2>
-        <h1>{this.state.title}</h1>
-        <form onSubmit={this.onSubmit}>
-          <input onChange={this.onChange} ref={input => this.input = input} />
-        </form>
+        <div onClick={this.onClick}>Click here!</div>
         <img src = {logo} alt= "baby yoda logo" />
+        <MyComponent />
       </div>
     );
   }
