@@ -41,7 +41,9 @@ class App extends Component {
         </h2>
         <div onClick={this.onClick}>Click here!</div>
         <img src = {logo} alt= "baby yoda logo" />
-        <MyComponent />
+        <MyComponent
+          title="Baby Yoda bruh." name="baby yoda"
+        />
       </div>
     );
   }
