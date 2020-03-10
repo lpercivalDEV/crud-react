@@ -8,7 +8,8 @@ class App extends Component {
     super(props);
 
     this.state = {
-      title: "App title"
+      title: " Initial title",
+      name: " Initial name"
     };
 
     this.onClick = this.onClick.bind(this);
@@ -16,33 +17,19 @@ class App extends Component {
 
   onClick() {
     this.setState({
-      title: "Keonda - the new wave for connection"
+      title: " Keonda - the new wave for connection",
+      name: " New App name"
     });
   }
 
   render() {
-    const list = [
-      "item 1",
-      "item 2",
-      "Another item"
-    ];
 
     return (
       <div className="App">
-        <h1>{this.state.title}</h1>
-        <h2>
-          {
-            list.map(item => {
-              return (
-                <div onClick={this.onClick}>{item}</div>
-              );
-            })
-          }
-        </h2>
-        <div onClick={this.onClick}>Click here!</div>
-        <img src = {logo} alt= "baby yoda logo" />
         <MyComponent
-          title="Baby Yoda bruh." name="baby yoda"
+          title={this.state.title}
+          name={this.state.name}
+          onClick={this.onClick}
         />
       </div>
     );
