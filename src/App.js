@@ -8,18 +8,25 @@ class App extends Component {
     super(props);
 
     this.state = {
-      title: " Initial title",
-      name: " Initial name"
+      name: " Initial name",
+      status: " off"
     };
 
-    this.onClick = this.onClick.bind(this);
+    this.updateName = this.updateName.bind(this);
+    this.updateStatus= this.updateStatus.bind(this);
   }
 
-  onClick() {
+  updateName(event) {
     this.setState({
-      title: " Keonda - the new wave for connection",
-      name: " New App name"
+      name: event.target.value,
     });
+  }
+
+  updateStatus(event){
+    this.setState( {
+      status: event.target.value,
+      checked: true
+    })
   }
 
   render() {
@@ -31,6 +38,22 @@ class App extends Component {
           name={this.state.name}
           onClick={this.onClick}
         />
+
+        <input
+          onChange={this.updateName}
+          value={this.state.name}
+        />
+
+        <input
+          type="checkbox"
+          onChange={this.updateStatus}
+          checked={this.state.checked}
+         />
+         <p
+         onChange={this.updateStatus}
+         >
+          Status: {this.state.status}
+         </p>
       </div>
     );
   }
