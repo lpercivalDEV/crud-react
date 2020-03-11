@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import newLogo from './rumymommy.jpg';
+import logo from './babyYoda.jpeg';
 
 const propTypes = {
   name: PropTypes.string.isRequired,
@@ -20,6 +21,7 @@ class MyComponent extends Component {
     return (
       <div className="component">
         <div>{this.props.name}</div>
+        <img className= "App-logo" src = {logo} alt= "old baby yoda logo" />
         <img className= "App-logo" src = {newLogo} alt= "new baby yoda logo" />
       </div>
     );
