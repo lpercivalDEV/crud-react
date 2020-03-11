@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import MyComponent from './MyComponent';
-import logo from './babyYoda.jpeg';
 import './App.css';
 
 class App extends Component {
@@ -8,26 +7,19 @@ class App extends Component {
     super(props);
 
     this.state = {
-      name: " Initial name",
-      status: " off"
+      checked: false,
+      status: " Unchecked"
     };
 
-    this.updateName = this.updateName.bind(this);
-    this.updateStatus= this.updateStatus.bind(this);
+    this.updateCheck = this.updateCheck.bind(this);
   }
 
-  updateName(event) {
+  updateCheck() {
     this.setState({
-      name: event.target.value,
-    });
-  }
-
-  updateStatus(event){
-    this.setState( {
-      status: event.target.value,
-      checked: true
+      checked: !this.state.checked,
     })
   }
+
 
   render() {
 
@@ -40,20 +32,20 @@ class App extends Component {
         />
 
         <input
-          onChange={this.updateName}
-          value={this.state.name}
+          type="checkbox"
+          onChange={this.updateCheck}
+          defaultChecked={this.state.checked}
         />
 
-        <input
-          type="checkbox"
-          onChange={this.updateStatus}
-          checked={this.state.checked}
-         />
-         <p
-         onChange={this.updateStatus}
-         >
-          Status: {this.state.status}
-         </p>
+        <p>
+          Status:
+            {
+              this.state.checked
+                ? <h3>Checked</h3>
+                : <h3>Unchecked</h3>
+            }
+        </p>
+
       </div>
     );
   }
