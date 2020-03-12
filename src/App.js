@@ -24,12 +24,16 @@ class App extends Component {
   }
 
   componentWillMount() {
-    const products = JSON.parse(localStorage.getItem("products"));
-
-    this.setState({
-      products
-    });
+    this.getProducts();
   }
+
+getProducts() {
+  const products = JSON.parse(localStorage.getItem("products"));
+
+  this.setState({
+    products
+  });
+}
 
   render(){
     return (
