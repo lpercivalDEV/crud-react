@@ -1,54 +1,55 @@
-import React, {Component} from 'react';
-import MyComponent from './MyComponent';
-import './App.css';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-class App extends Component {
-  constructor(props) {
-    super(props);
+export default function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/users">Users</Link>
+            </li>
+          </ul>
+        </nav>
 
-    this.state = {
-      checked: false,
-      status: " Unchecked"
-    };
-
-    this.updateCheck = this.updateCheck.bind(this);
-  }
-
-  updateCheck() {
-    this.setState({
-      checked: !this.state.checked,
-    })
-  }
-
-
-  render() {
-
-    return (
-      <div className="App">
-        <MyComponent
-          title={this.state.title}
-          name={this.state.name}
-          onClick={this.onClick}
-        />
-
-        <input
-          type="checkbox"
-          onChange={this.updateCheck}
-          defaultChecked={this.state.checked}
-        />
-
-        <p>
-          Status:
-            {
-              this.state.checked
-                ? <h3>Checked</h3>
-                : <h3>Unchecked</h3>
-            }
-        </p>
-
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/users">
+            <Users />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
       </div>
-    );
-  }
+    </Router>
+  );
 }
 
-export default App;
+function Home() {
+  return <h2>Home</h2>;
+}
+
+function About() {
+  return <h2>About</h2>;
+}
+
+function Users() {
+  return <h2>Users</h2>;
+}
